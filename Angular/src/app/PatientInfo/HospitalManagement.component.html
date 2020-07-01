@@ -9,9 +9,12 @@
 
                  Patient Name: <input type="text" formControlName="NameControl"[(ngModel)]="patientObj.name" value="" /><br />
                  <div [hidden]="!(patientObj.formPatientGroup.controls['NameControl'] .hasError('required'))">
-                    *Patient Name is required
+                    Patient Name is required
                     </div><br /><br />
-    
+     <!-- Patient Name: <input formControlName="NameControl" type="text" [(ngModel)]="patientObj.name" value=""><br><br> -->
+                    <!-- <div [hidden]="!(patientObj.formPatientGroup.controls['nameControl'].hasError('required'))">
+                   *Name is required 
+               </div><br>     -->
                Patient Problem: <input formControlName="ProblemDescriptionControl" type="text" [(ngModel)]="patientObj.problemDescription" value=""><br><br>
                 <div [hidden]="!(patientObj.formPatientGroup.controls['ProblemDescriptionControl'].hasError('required'))" >
                    *Patient problem is required

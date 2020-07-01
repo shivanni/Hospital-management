@@ -1,52 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using HospitalManagement.Models;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Mvc;
-using HospitalManagement.DAL;
-using System.ComponentModel.DataAnnotations;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Threading.Tasks;
+//using HospitalManagement.Models;
+//using Microsoft.AspNetCore.Cors;
+//using Microsoft.AspNetCore.Mvc;
+//using HospitalManagement.DAL;
+//using System.ComponentModel.DataAnnotations;
 
-namespace HospitalManagement.Controllers
-{
-    // [EnableCors("MyAllowSpecificOrigins")]
-    public class PatientController : Controller
-    {
-      
-        public IActionResult Submit([FromBody] PatientModel obj)
-        {
-           
-            var context = new ValidationContext(obj, null, null);
+//namespace HospitalManagement.Controllers
+//{
+//    // [EnableCors("MyAllowSpecificOrigins")]
+//    public class PatientController : Controller
+//    {
 
-            var result = new List<ValidationResult>();
+//        public IActionResult Submit([FromBody] PatientModel obj)
+//        {
 
-            var isValid = Validator.TryValidateObject(obj, context, result, true);
+//            var context = new ValidationContext(obj, null, null);
 
-            if (result.Count == 0)
-            {
-                PatientDAL dal = new PatientDAL();
-                dal.Database.EnsureCreated(); 
-                dal.Add(obj); 
-                dal.SaveChanges();
+//            var result = new List<ValidationResult>();
 
-                List<PatientModel> recs = dal.PatientModels.ToList<PatientModel>();
+//            var isValid = Validator.TryValidateObject(obj, context, result, true);
 
-                return StatusCode(200, recs); 
-            }
-            else {
-                return StatusCode(500, result); 
-            }
-        }
+//            if (result.Count == 0)
+//            {
+//                PatientDAL dal = new PatientDAL();
+//                dal.Database.EnsureCreated(); 
+//                dal.Add(obj); 
+//                dal.SaveChanges();
 
-        public IActionResult Update()
-        {
-            return View();
-        }
+//                List<PatientModel> recs = dal.PatientModels.ToList<PatientModel>();
 
-        public IActionResult Delete()
-        {
-            return View();
-        }
-    }
-}
+//                return StatusCode(200, recs); 
+//            }
+//            else {
+//                return StatusCode(500, result); 
+//            }
+//        }
+
+//        public IActionResult Update()
+//        {
+//            return View();
+//        }
+
+//        public IActionResult Delete()
+//        {
+//            return View();
+//        }
+//    }
+
+//       
+                                  
+
+//            return View();
+//        }
+//}
