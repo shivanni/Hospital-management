@@ -1,13 +1,15 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import {  HospitalManagementModule } from './App/HospitalManagement.module';
+
+import {MainModule } from './app/MasterPage/MainModule';
 
 import { environment } from './environments/environment';
+
 
 if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(HospitalManagementModule)
+platformBrowserDynamic().bootstrapModule(MainModule)
   .catch(err => console.log(err));

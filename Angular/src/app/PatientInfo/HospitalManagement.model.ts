@@ -12,7 +12,7 @@ export class PatientModel{
         var _builder=new FormBuilder();
         this.formPatientGroup=_builder.group({});
         this.formPatientGroup.addControl("NameControl",new FormControl('',Validators.required));
-        this.formPatientGroup.addControl("PproblemDescriptionDControl",new FormControl('',Validators.required));
+        this.formPatientGroup.addControl("ProblemDescriptionControl",new FormControl('',Validators.required));
 
 
 

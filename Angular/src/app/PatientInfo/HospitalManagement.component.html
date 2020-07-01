@@ -1,0 +1,38 @@
+<div>
+ <form [formGroup]= "patientObj.formPatientGroup">
+    <div class="H">
+        <div class="H" align=center>
+            <h1><strong>Hospital Info</strong></h1>
+        </div>
+        <div align=center>
+     <!-- Patient Id: <input [ngModelOptions]="{standalone: true}" type="text" [(ngModel)]="patientObj.Id" value=""><br><br> -->
+
+                 Patient Name: <input type="text" formControlName="NameControl"[(ngModel)]="patientObj.name" value="" /><br />
+                 <div [hidden]="!(patientObj.formPatientGroup.controls['NameControl'] .hasError('required'))">
+                    *Patient Name is required
+                    </div><br /><br />
+    
+               Patient Problem: <input formControlName="ProblemDescriptionControl" type="text" [(ngModel)]="patientObj.problemDescription" value=""><br><br>
+                <div [hidden]="!(patientObj.formPatientGroup.controls['ProblemDescriptionControl'].hasError('required'))" >
+                   *Patient problem is required
+               </div><br> 
+               <input id="Button1" [disabled]="!(patientObj.formPatientGroup.valid)" type="button" (click)="Submit()" class="btn" value="Add"/> 
+              
+           </div>
+    </div>
+
+              </form>
+              
+      <table border="3">
+  <tr>
+      <td>Patient Id</td>
+     <td>Patient name</td>
+     <td>Patient Description</td>
+  </tr>
+  <tr *ngFor="let c of patientList">
+      <td>{{c.id}}</td>
+    <td>{{c.name}}</td>
+    <td>{{c.problemDescription}}</td>
+</tr>
+  </table>
+  </div>
