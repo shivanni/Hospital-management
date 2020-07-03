@@ -2,31 +2,32 @@
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
-import { HospitalManagementComponent } from './HospitalManagement.component';
-//import { routes } from '../Routing/MainRouting';
-import { HttpClientModule } from "@angular/common/http"
-import {Proutes} from "../Routing/PatientInfoRouting"
+
+import { HttpClientModule } from "@angular/common/http";
+//import {Sroutes} from "src/app/Routing/SearchRouting"
 import { CommonModule } from '@angular/common';
+import { PatientLoginComponent } from './PatientLogin.component';
+import { Lroutes } from '../Routing/LogIn';
+
 
 
 @NgModule({
   declarations: [
    
-   HospitalManagementComponent,
-  
-   
+    PatientLoginComponent
+    
     
   ],
   imports: [
-    CommonModule,
+   CommonModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forChild(Proutes),
+    RouterModule.forChild(Lroutes),
 
    
   ],
   providers: [],
-  bootstrap: [HospitalManagementComponent]
+  bootstrap: [PatientLoginComponent]
 })
-export class PatientModule { }
+export class LoginhModule { }

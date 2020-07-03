@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using HospitalManagement.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -13,53 +14,58 @@ namespace HospitalManagement.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SecurityController : ControllerBase
+    public class SecurityAPIController : ControllerBase
     {
-        // GET: api/Security
+        // GET: api/SecurityAPI
         [HttpGet]
+        
 
-
-        public IEnumerable<string> Get()
+        private string GenerateJSONWebToken(string userName)
         {
-            // Key
-            var securityKey = new SymmetricSecurityKey
-                (Encoding.UTF8.GetBytes("238420983409284098230948"));
-            // Algorithm
-            var credentials = new
-                    SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-            // claimns
-            var claims = new[] {
-                new Claim(JwtRegisteredClaimNames.Sub, "Shivani"),
-                new Claim(JwtRegisteredClaimNames.Email, ""),
-                new Claim("Admin", "true"),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-                };
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("2525255666665566"));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-            var token = new JwtSecurityToken("finishingschool",
-              "finishingschool",
-              claims,
+            var claims = new[] {
+            new Claim(JwtRegisteredClaimNames.Sub, userName),
+            new Claim(JwtRegisteredClaimNames.Email,""),
+            new Claim("Admin","true"),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+            };
+
+            var token = new JwtSecurityToken("shivani",
+              "shivani",
+              null,
               expires: DateTime.Now.AddMinutes(120),
               signingCredentials: credentials);
 
-            string tokenstring = new JwtSecurityTokenHandler().WriteToken(token);
-            return new string[] { tokenstring };
+            string tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+            return tokenString;
         }
 
-
-        // GET: api/Security/5
+        // GET: api/SecurityAPI/5
         [HttpGet("{id}", Name = "Get")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST: api/Security
+        // POST: api/SecurityAPI
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] User obj)
         {
+            if ((obj.userName == "shivani") && (obj.password == "pass123"))
+            {
+                obj.token = GenerateJSONWebToken(obj.userName);
+                obj.password = "";
+                return Ok(obj);
+            }
+            else
+            {
+                return StatusCode(401, "Unauthorized Crediantial");
+            }
         }
 
-        // PUT: api/Security/5
+        // PUT: api/SecurityAPI/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {

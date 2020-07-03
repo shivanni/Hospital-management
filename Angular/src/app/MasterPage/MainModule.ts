@@ -7,15 +7,15 @@ import { MasterComponent } from "./MasterComponent";
 import { routes } from '../Routing/MainRouting';
 import { HttpClientModule } from "@angular/common/http";
 import { HomeComponent } from './HomeComponent';
+//import { PatientLoginComponent } from '../PatientLogin/PatientLogin.component';
+
 
 
 @NgModule({
   declarations: [
    
     HomeComponent,
-    MasterComponent,
-    
-    
+    MasterComponent
   ],
   imports: [
     BrowserModule,
