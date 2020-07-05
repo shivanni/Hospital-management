@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  User } from './PatientLogin.Model';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,9 +11,11 @@ import { HttpClient } from '@angular/common/http';
   //styleUrls: ['./PatientLogin.component.css']
 })
 export class PatientLoginComponent{
-  userObj:User=new User()
+  //userObj:User=new User()
   
-  constructor(public Http:HttpClient) { }
+  constructor(public Http:HttpClient, public  userObj:User, 
+              public routing: Router
+    ) { }
   
   Login(){
     let loginDetail={
@@ -26,7 +29,9 @@ export class PatientLoginComponent{
                     );
   }
   Success(res){
-    alert(res.token)
+    //alert(res.token)
+    this.userObj.token = res.token;
+    this.routing.navigate(["Home"])
   }
   Error(res){}
  

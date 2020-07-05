@@ -1,14 +1,8 @@
-﻿ 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,67 +21,48 @@ namespace HospitalManagement
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                   .AddJwtBearer(options =>
+                   {
+                       options.TokenValidationParameters = new TokenValidationParameters
+                       {
+                           ValidateIssuer = true,
+                           ValidateAudience = true,
+                           ValidateLifetime = true,
+                           ValidateIssuerSigningKey = true,
+                           ValidIssuer = "shivani",
+                           ValidAudience = "shivani",
+                           IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("238420983409284098230948"))
+                       };
+                   });
+
+
             services.Configure<CookiePolicyOptions>(options =>
             {
-              
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            /*   services.AddCors(options =>
-               {
-                   options.AddPolicy(MyAllowSpecificOrigins,
-                   builder =>
-                   {
-                       builder.WithOrigins("http://localhost:4200")
-                                           .AllowAnyHeader()
-                                           .AllowAnyMethod();
-                   });
-               });  */
-
-            //         services.AddController().AddNewtonSoftJson(options =>{
-            //           options.SerializerSettings.ContractResolver = new DefaultContractResolver();
-            //    });
-
-
 
             services.AddCors(options =>
-                    options.AddPolicy("MyAllowSpecificOrigins",
-                      builder =>
-                      {
-                          builder.AllowAnyOrigin()
-                                .AllowAnyMethod()
-                                .AllowAnyHeader();
+                          options.AddPolicy("MyAllowSpecificOrigins",
+                            builder =>
+                            {
+                                builder.AllowAnyOrigin()
+                                      .AllowAnyMethod()
+                                      .AllowAnyHeader();
+                            }));
 
 
-
-                      }));
-
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            ValidIssuer = Configuration["Jwt:Issuer"],
-            ValidAudience = Configuration["Jwt:Issuer"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
-        };
-    });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
-    
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-
+            app.UseAuthentication();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -95,7 +70,7 @@ namespace HospitalManagement
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-   
+               
                 app.UseHsts();
             }
 

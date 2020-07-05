@@ -60,11 +60,11 @@ namespace HospitalManagement.Controllers
                 List<PatientModel> recs = dal.PatientModels.ToList<PatientModel>();
               
 
-                return StatusCode(200, recs); // 200 for success 
+                return StatusCode(200, recs);
             }
             else
             {
-                return StatusCode(500, result); // 500 for internal server error
+                return StatusCode(500, result); 
             }
         }
 

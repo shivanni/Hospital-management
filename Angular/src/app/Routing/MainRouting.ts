@@ -1,10 +1,12 @@
 
 import { HomeComponent } from '../MasterPage/HomeComponent';
-//import { PatientLoginComponent } from '../PatientLogin/PatientLogin.component';
+import { SecurityLogic } from '../Utilities/Utility.AuthGuard';
+
 export const routes=[
-    {path:'',component:HomeComponent},
-    {path:'Home',component:HomeComponent},
-    {path:'Patient',loadChildren:"../PatientInfo/PatientModule#PatientModule"},
-    {path:'SearchPatient',loadChildren:"../Search/SearchModule#SearchModule"},
+    //{path:'',component:HomeComponent, canActivate : [SecurityLogic]},
+    {path:'',component:HomeComponent,},
+    {path:'Home',component:HomeComponent,canActivate : [SecurityLogic]},
+    {path:'Patient',loadChildren:"../PatientInfo/PatientModule#PatientModule", canActivate : [SecurityLogic]},
+    {path:'SearchPatient',loadChildren:"../Search/SearchModule#SearchModule", canActivate : [SecurityLogic]},
     {path:'PatientLogin',loadChildren:"../PatientLogin/PatientLoginModule#LoginhModule"}
 ];

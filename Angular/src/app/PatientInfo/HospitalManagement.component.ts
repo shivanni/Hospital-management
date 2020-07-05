@@ -19,9 +19,12 @@ export class HospitalManagementComponent {
 
 
   Submit() {
-    var data = _.omit(this.patientObj, ['formPatientGroup']);
+    //var data = _.omit(this.patientObj, ['formPatientGroup']);
+    var patientDto:any={};
+    patientDto.name=this.patientObj.name;
+     patientDto.problemDescription=this.patientObj.problemDescription;
     
-    this.Http.post("https://localhost:44372/api/PatientAPI", data)
+    this.Http.post("https://localhost:44372/api/PatientAPI", patientDto)
       .subscribe(res => { this.Success(res) },
         err => { this.Error(err) }
 

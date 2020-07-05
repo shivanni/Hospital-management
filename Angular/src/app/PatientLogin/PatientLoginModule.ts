@@ -2,20 +2,18 @@
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
-
-import { HttpClientModule } from "@angular/common/http";
-//import {Sroutes} from "src/app/Routing/SearchRouting"
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { CommonModule } from '@angular/common';
 import { PatientLoginComponent } from './PatientLogin.component';
 import { Lroutes } from '../Routing/LogIn';
-
-
+import { User } from './PatientLogin.Model';
+import { SecurityLogic } from '../Utilities/Utility.AuthGuard';
+import { MyJwtInterceptor } from '../Utilities/Token.Interceptor';
 
 @NgModule({
   declarations: [
    
     PatientLoginComponent
-    
     
   ],
   imports: [
@@ -24,10 +22,12 @@ import { Lroutes } from '../Routing/LogIn';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forChild(Lroutes),
-
    
   ],
-  providers: [],
+  providers: [SecurityLogic, { 
+    provide: HTTP_INTERCEPTORS, 
+    useClass: MyJwtInterceptor, 
+    multi: true }],
   bootstrap: [PatientLoginComponent]
 })
 export class LoginhModule { }

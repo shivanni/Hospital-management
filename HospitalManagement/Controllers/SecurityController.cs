@@ -22,7 +22,7 @@ namespace HospitalManagement.Controllers
 
         private string GenerateJSONWebToken(string userName)
         {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("2525255666665566"));
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("238420983409284098230948"));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             var claims = new[] {
@@ -42,14 +42,14 @@ namespace HospitalManagement.Controllers
             return tokenString;
         }
 
-        // GET: api/SecurityAPI/5
+        // GET: 
         [HttpGet("{id}", Name = "Get")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST: api/SecurityAPI
+        // POST: 
         [HttpPost]
         public IActionResult Post([FromBody] User obj)
         {
@@ -61,17 +61,17 @@ namespace HospitalManagement.Controllers
             }
             else
             {
-                return StatusCode(401, "Unauthorized Crediantial");
+                return StatusCode(401, "Not proprer code");
             }
         }
 
-        // PUT: api/SecurityAPI/5
+        // PUT
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE: api/ApiWithActions/5
+        // DELETE
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

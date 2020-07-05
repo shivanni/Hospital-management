@@ -4,9 +4,11 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import { HospitalManagementComponent } from './HospitalManagement.component';
 //import { routes } from '../Routing/MainRouting';
-import { HttpClientModule } from "@angular/common/http"
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http"
 import {Proutes} from "../Routing/PatientInfoRouting"
 import { CommonModule } from '@angular/common';
+import { MyJwtInterceptor } from '../Utilities/Token.Interceptor';
+//import { SecurityLogic } from '../Utilities/Utility.AuthGuard';
 
 
 @NgModule({
@@ -14,8 +16,6 @@ import { CommonModule } from '@angular/common';
    
    HospitalManagementComponent,
   
-   
-    
   ],
   imports: [
     CommonModule,
@@ -26,7 +26,11 @@ import { CommonModule } from '@angular/common';
 
    
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, 
+      useClass: MyJwtInterceptor, 
+      multi: true } 
+  ],
   bootstrap: [HospitalManagementComponent]
 })
 export class PatientModule { }
