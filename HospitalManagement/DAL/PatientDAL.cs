@@ -28,7 +28,8 @@ namespace HospitalManagement.DAL
         
              protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(conconStr);
+            //optionsBuilder.UseSqlServer(conconStr);
+            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-073HNCL;Initial Catalog=Management;Integrated Security=True");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
