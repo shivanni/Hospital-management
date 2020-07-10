@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace HospitalManagement.Controllers
 {
@@ -16,14 +17,16 @@ namespace HospitalManagement.Controllers
     [Route("api/[controller]")]
     [ApiController]
 
+    [EnableCors("MyAllowSpecificOrigins")]
+
     public class PatientAPIController : ControllerBase
     {
+        public string ConStr { get; private set; }
 
-        [EnableCors("MyAllowSpecificOrigins")]
         [HttpGet]
         public IActionResult Get(string patientName)
         {
-            PatientDAL dal = new PatientDAL();
+            PatientDAL dal = new PatientDAL(ConStr);
             List<PatientModel> search = (from temp in dal.PatientModels
                                          where temp.name == patientName
                                          select temp)
@@ -44,6 +47,7 @@ namespace HospitalManagement.Controllers
         {
 
             var context = new ValidationContext(obj, null, null);
+            //fill the errors
 
             var result = new List<ValidationResult>();
 
@@ -51,10 +55,10 @@ namespace HospitalManagement.Controllers
 
             if (result.Count == 0)
             {
-                PatientDAL dal = new PatientDAL();
-                dal.Database.EnsureCreated();
-                dal.Add(obj);
-                dal.SaveChanges();
+                PatientDAL dal = new PatientDAL(ConStr);
+                dal.Database.EnsureCreated();   // ensure table is created or not
+                dal.Add(obj);                   //inmemory
+                dal.SaveChanges();              // pysical commit save to database         
 
 
                 List<PatientModel> recs = dal.PatientModels.ToList<PatientModel>();
