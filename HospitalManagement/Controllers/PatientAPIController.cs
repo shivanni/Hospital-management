@@ -68,7 +68,7 @@ namespace HospitalManagement.Controllers
             }
             else
             {
-                return StatusCode(500, result); 
+                return StatusCode(500, result);
             }
         }
 
