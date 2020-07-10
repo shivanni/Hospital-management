@@ -1,6 +1,5 @@
 
-
-import { HospitalManagementComponent } from '../PatientInfo/HospitalManagement.component';
+import { HospitalManagementComponent } from '../PatientAddDetails/HospitalManagement.component';
 
 
 export const Proutes=[

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PatientModel } from "src/app/PatientInfo/HospitalManagement.model";
+import { PatientModel } from "src/app/PatientAddDetails/HospitalManagement.model";
 import { HttpClient } from "@angular/common/http";
 
 @Component({

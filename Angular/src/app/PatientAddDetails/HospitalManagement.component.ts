@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { PatientModel } from './HospitalManagement.model'
+import { PatientModel, PatientProblem } from './HospitalManagement.model'
 
 import * as _ from 'lodash'
 @Component({
@@ -9,14 +9,22 @@ import * as _ from 'lodash'
 })
 export class HospitalManagementComponent {
   title = 'HospitalManagement';
+  //patientProblemCollection:PatientProblem = new PatientProblem();
+  patientProblem:PatientProblem = new PatientProblem();
   constructor(public Http: HttpClient) {
-    this.patientObj = new PatientModel()
+    this.patientObj = new PatientModel()  //single record
+    
    
   }
   errorMsg = [];
   patientObj: PatientModel = null;
   patientList: Array<PatientModel> = new Array<PatientModel>();
 
+  AddProblem(){
+      this.patientObj.patientProblems.push(this.patientProblem);
+      this.patientProblem = new PatientProblem();
+
+  }
 
   Submit() {
     //var data = _.omit(this.patientObj, ['formPatientGroup']);

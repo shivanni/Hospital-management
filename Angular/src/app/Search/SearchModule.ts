@@ -2,8 +2,6 @@
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
-//import { HospitalManagementComponent } from '../PatientInfo/HospitalManagement.component';
-//import { routes } from '../Routing/MainRouting';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { SearchComponent } from "src/app/Search/SearchPatient.Component";
 import {Sroutes} from "src/app/Routing/SearchRouting"

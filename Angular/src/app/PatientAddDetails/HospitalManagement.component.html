@@ -1,0 +1,58 @@
+ 
+    <form [formGroup]="patientObj.formPatientGroup">
+    
+       <!-- Patient Id: <input [ngModelOptions]="{standalone: true}" type="text" [(ngModel)]="patientObj.Id" value="" ><br><br> -->
+            <label>PATIENT NAME</label>
+            <div>
+                <input  formControlName="NameControl"[(ngModel)]="patientObj.name" id="form-horizontal-text"  type="text" placeholder="Patient Name">
+            </div>
+             <div [hidden]="!(patientObj.formPatientGroup.controls['NameControl'] .hasError('required'))">
+                *Patient Name is required
+             </div> <br>
+        
+            <label>PATIENT PROBLEM</label>
+            <div>
+                <input formControlName="ProblemDescriptionControl" [(ngModel)]="patientProblem.problemDescription"  type="text" placeholder="Patient Problem">
+            </div>
+
+            <div [hidden]="!(patientObj.formPatientGroup.controls['ProblemDescriptionControl'].hasError('required'))" >
+                *Patient problem is required
+        </div> <br>
+        
+    
+            <div>
+                            <input type="button" value="Add Problem" (click)="AddProblem()" >
+                  </div> 
+                  
+            <div>
+                <input  type="Submit"value="Submit"[disabled]="!(patientObj.formPatientGroup.valid)" (click)="Submit()">
+            </div>
+    </form>
+    
+    <table >
+        
+            <tr>
+                <th>Patient Problem</th>
+            </tr>
+      
+            <tr  *ngFor="let Problem of patientObj.patientProblems" >
+                <td>{{Problem.problemDescription}}</td>
+            </tr>
+       
+    </table> <br><br>
+    
+    <table border=3>
+    
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            <tr  *ngFor="let c of patientList" >
+                <td>{{c.name}}</td>
+                <td>{{c.problemDescription}}</td>
+            </tr>
+       
+    </table>
+    
+    
+    
