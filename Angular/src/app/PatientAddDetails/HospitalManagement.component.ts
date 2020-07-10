@@ -9,7 +9,6 @@ import * as _ from 'lodash'
 })
 export class HospitalManagementComponent {
   title = 'HospitalManagement';
-  //patientProblemCollection:PatientProblem = new PatientProblem();
   patientProblem:PatientProblem = new PatientProblem();
   constructor(public Http: HttpClient) {
     this.patientObj = new PatientModel()  //single record
