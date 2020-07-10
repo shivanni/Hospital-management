@@ -31,7 +31,7 @@ namespace HospitalManagement
             var optionsBuilder = new DbContextOptionsBuilder<PatientDAL>();
             optionsBuilder.UseSqlServer(Configuration["conStr"].ToString());
             PatientDAL dal = new PatientDAL(Configuration["conStr"].ToString());
-            dal.Database.EnsureCreated();
+             dal.Database.EnsureCreated();
             //end here
             services.AddDbContext<PatientDAL>(
                 options => options.UseSqlServer(Configuration["conStr"].ToString()));
