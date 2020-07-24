@@ -3,11 +3,14 @@ import {
         FormGroup,
         FormControl,Validators,FormBuilder
     } from '@angular/forms'
+
 export class PatientModel{
     id: number=0;
     name:string = "";
     problemDescription:string = "";
+   // selectDisease:string ="";
     patientProblems: Array<PatientProblem>= new Array<PatientProblem>();  //  Array to store multiple Problem Description
+    //diseases: Array<Disease>=new Array<Disease>();
  
    
     formPatientGroup :FormGroup=null;
@@ -23,3 +26,8 @@ export class PatientProblem{
     id: number=0;
     problemDescription:string="";
 }
+export class Disease{
+    id: number=0
+   name:string="";
+}
+

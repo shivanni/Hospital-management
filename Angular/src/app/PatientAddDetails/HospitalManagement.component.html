@@ -1,4 +1,6 @@
  
+
+    
     <form [formGroup]="patientObj.formPatientGroup">
     
        <!-- Patient Id: <input [ngModelOptions]="{standalone: true}" type="text" [(ngModel)]="patientObj.Id" value="" ><br><br> -->
@@ -18,16 +20,41 @@
             <div [hidden]="!(patientObj.formPatientGroup.controls['ProblemDescriptionControl'].hasError('required'))" >
                 *Patient problem is required
         </div> <br>
-        
     
                    <div>
                             <input type="button" value="Add Problem" (click)="AddProblem()" >
-                  </div> 
+                  </div> <br><br>
+ 
+
+                  <div class ="formGroup">
+
+                    <label for="DISEASE">
+                            Disease
+                    </label>
+                    <select id="Disease" name="Disease"[(ngModel)]="Disease" class="form-control" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let disc of diseases" [value]="disc.id">
+                            {{disc.name}}
+
+                        </option>
+                        </select>
+
+                  </div>
+                  
+
+
+                <!-- <div>
+                    <span> DISEASE  </span>
+                    <select>
+                            <option *ngFor="let Disease of disease">{{Disease}}</option>
+                    </select>
+                </div>  -->
                   
             <div>
                 <input  type="Submit"value="Submit"[disabled]="!(patientObj.formPatientGroup.valid)" (click)="Submit()">
+         
             </div>
     </form>
+
     
     <table >
         
@@ -53,6 +80,7 @@
             </tr>
        
     </table>
+    
     
     
     

@@ -15,7 +15,7 @@ export class SecurityLogic implements CanActivate {
         return true; 
      }
     
-     this._router.navigate(['/PatientLogin']);
+     this._router.navigate(['/PatientLogin/Login']);
      return false;
     }
 }

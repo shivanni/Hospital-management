@@ -53,7 +53,7 @@ namespace HospitalManagement.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] User obj)
         {
-            if ((obj.userName == "shivani") && (obj.password == "pass123"))
+            if ((obj.userName == "shivani") && (obj.password == "shivani"))
             {
                 obj.token = GenerateJSONWebToken(obj.userName);
                 obj.password = "";

@@ -22,7 +22,7 @@ export class PatientLoginComponent{
       userName:this.userObj.userName,
       password:this.userObj.password
     }
-      this.Http.post("https://localhost:44372/api/SecurityAPI", loginDetail)
+      this.Http.post("https://localhost:44372/api/SecurityAPI",loginDetail)
           .subscribe(
               res=>this.Success(res),
               res=>this.Error(res)
