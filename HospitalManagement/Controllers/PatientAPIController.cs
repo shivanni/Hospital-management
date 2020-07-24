@@ -9,7 +9,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 
 namespace HospitalManagement.Controllers
 {
@@ -43,7 +45,7 @@ namespace HospitalManagement.Controllers
 
         // POST: api/PatientAPI
         [HttpPost]
-        public IActionResult Post([FromBody] PatientModel obj)
+        public string Post([FromBody] PatientModel obj)
         {
 
             var context = new ValidationContext(obj, null, null);
@@ -61,14 +63,25 @@ namespace HospitalManagement.Controllers
                 dal.SaveChanges();              // pysical commit save to database         
 
 
-                List<PatientModel> recs = dal.PatientModels.ToList<PatientModel>();
-              
+                List<PatientModel> recs = dal.PatientModels.Include(pat => pat.problems).ToList<PatientModel>();
+                var json = JsonConvert.SerializeObject(recs, Formatting.None,
+                                         new JsonSerializerSettings()
+                                         {
+                                             ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                                         });
+                return json;
 
-                return StatusCode(200, recs);
+               // return StatusCode(200, recs);
             }
             else
             {
-                return StatusCode(500, result);
+                var json = JsonConvert.SerializeObject(result, Formatting.None,
+                                         new JsonSerializerSettings()
+                                         {
+                                             ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                                         });
+                // return StatusCode(500, result);
+                return json;
             }
         }
 

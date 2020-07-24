@@ -62,7 +62,7 @@
                 <th>Patient Problem</th>
             </tr>
       
-            <tr  *ngFor="let Problem of patientObj.patientProblems" >
+            <tr  *ngFor="let Problem of patientObj.problems" >
                 <td>{{Problem.problemDescription}}</td>
             </tr>
        
@@ -71,12 +71,23 @@
     <table border=3>
     
             <tr>
+                <th>Sr.No.</th>
                 <th>Name</th>
                 <th>Description</th>
             </tr>
-            <tr  *ngFor="let c of patientList" >
+            <tr  *ngFor="let c of patientList let i=index;" >
+                <td>{{i+1}}</td>
                 <td>{{c.name}}</td>
-                <td>{{c.problemDescription}}</td>
+                <td>
+                    <table>
+                        <tr  *ngFor="let pr of c.problems  let k=index;" >
+                            <td>{{k+1}}</td>
+                            <td>
+                                {{pr.problemDescription}}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
             </tr>
        
     </table>

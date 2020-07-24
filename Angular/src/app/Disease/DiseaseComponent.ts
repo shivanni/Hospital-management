@@ -27,14 +27,14 @@ import { DiseaseModel } from './DModel';
       });
     }
     getDiseases(){
-      return[
-        {id: 1, name:'None'},
-    {id: 2, name:'Blood-Pressure'},
-    {id: 3, name:'Diabetes'},
-    {id: 4, name:'Cystic Fibrosis'},
-    {id: 5, name:'Headache'},
-    {id: 6, name:'cold'},
-      ]
+    //   return[
+    //     {id: 1, name:'None'},
+    // {id: 2, name:'Blood-Pressure'},
+    // {id: 3, name:'Diabetes'},
+    // {id: 4, name:'Cystic Fibrosis'},
+    // {id: 5, name:'Headache'},
+    // {id: 6, name:'cold'},
+    //   ]
 
     }
 

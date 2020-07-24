@@ -166,7 +166,6 @@ E:\FS Projects\Hospital Management\HospitalManagement\obj\Debug\netcoreapp2.2\Ho
 E:\FS Projects\Hospital Management\HospitalManagement\obj\Debug\netcoreapp2.2\HospitalManagement.AssemblyInfoInputs.cache
 E:\FS Projects\Hospital Management\HospitalManagement\obj\Debug\netcoreapp2.2\HospitalManagement.AssemblyInfo.cs
 E:\FS Projects\Hospital Management\HospitalManagement\obj\Debug\netcoreapp2.2\HospitalManagement.TagHelpers.input.cache
-E:\FS Projects\Hospital Management\HospitalManagement\obj\Debug\netcoreapp2.2\HospitalManagement.TagHelpers.output.cache
 E:\FS Projects\Hospital Management\HospitalManagement\obj\Debug\netcoreapp2.2\HospitalManagement.RazorCoreGenerate.cache
 E:\FS Projects\Hospital Management\HospitalManagement\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.g.cshtml.cs
 E:\FS Projects\Hospital Management\HospitalManagement\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.g.cshtml.cs
