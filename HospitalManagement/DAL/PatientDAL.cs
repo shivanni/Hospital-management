@@ -1,9 +1,5 @@
 ﻿using HospitalManagement.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HospitalManagement.DAL
 {
@@ -39,12 +35,18 @@ namespace HospitalManagement.DAL
             modelBuilder.Entity<Problem>()
                 .ToTable("tb1Problem");
 
+            modelBuilder.Entity<DiseaseModel>()
+             .ToTable("tb1Disease");
+
             modelBuilder.Entity<PatientModel>()
                 .HasKey(p => p.id);
     
             modelBuilder.Entity<Problem>()
                .HasKey(p => p.id);
 
+
+            modelBuilder.Entity<DiseaseModel>()
+                .HasKey(p => p.id);
             // one to many
             modelBuilder.Entity<PatientModel>()
                 .HasMany(c => c.problems)
@@ -55,7 +57,7 @@ namespace HospitalManagement.DAL
 
         public DbSet<PatientModel> PatientModels { get; set; }
         public DbSet<Problem> Problems { get; set; }
-
+        public DbSet<DiseaseModel> Diseas { get; set; }
 
     }
 }

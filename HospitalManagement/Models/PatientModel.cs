@@ -30,4 +30,5 @@ namespace HospitalManagement.Models
         public string problemDescription { get; set; }
         public PatientModel patient { get; set; }   //Imverse Navigation Property
     }
+   
 }

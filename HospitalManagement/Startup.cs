@@ -13,7 +13,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 
 namespace HospitalManagement
@@ -28,7 +27,6 @@ namespace HospitalManagement
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
-
             var optionsBuilder = new DbContextOptionsBuilder<PatientDAL>();
             optionsBuilder.UseSqlServer(Configuration["conStr"].ToString());
             PatientDAL dal = new PatientDAL(Configuration["conStr"].ToString());
@@ -72,52 +70,14 @@ namespace HospitalManagement
 
 
                             }));
-            services.AddControllersWithViews().AddNewtonsoftJson(options => options.
-            SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-            );
 
 
-
-            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
-        //        public void Configure(IApplicationBuilder app, IHostEnvironment env)
-        //        {
-        //            app.UseAuthentication();
-        //            if (env.IsDevelopment())
-        //            {
-        //                app.UseDeveloperExceptionPage();
-        //            }
-        //            else
-        //            {
-        //                app.UseExceptionHandler("/Home/Error");
-        //                app.UseHsts();
-        //            }
-        //            app.UseHttpsRedirection();
-        //            app.UseStaticFiles();
-        //            app.UseCookiePolicy();
-        //            app.UseCors("MyAllowSpecificOrigins");
-
-
-
-        //            app.UseMvc(routes =>
-        //            {
-        //                routes.MapRoute(
-        //                    name: "default",
-        //                    template: "{controller=Patient}/{action=Add}");
-
-
-        //            });
-
-
-        //        }
-        //    }
-        //}
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseAuthentication();
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -125,31 +85,21 @@ namespace HospitalManagement
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
-            app.UseRouting();
             app.UseCookiePolicy();
-            app.UseCors("AllowOriginRule");
-            app.UseAuthorization();
+            app.UseCors("MyAllowSpecificOrigins");
 
-            app.UseEndpoints(endpoints =>
+            app.UseMvc(routes =>
             {
-                endpoints.MapControllerRoute(
+                routes.MapRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}");
-                endpoints.MapControllerRoute(
-                    name: "url1",
-                    pattern: "Hospital/Register",
-                    defaults: new { controller = "Patient", action = "Add" });
-                endpoints.MapControllerRoute(
-                name: "url2",
-                pattern: "Patient/Add",
-                defaults: new { controller = "Patient", action = "Add" });
+                    template: "{controller=Patient}/{action=Add}");
             });
+
+
         }
     }
 }
