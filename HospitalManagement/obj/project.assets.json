@@ -12954,11 +12954,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\New folder (3)\\New folder\\Hospital-management-master\\HospitalManagement\\HospitalManagement.csproj",
+      "projectUniqueName": "E:\\FS Projects\\Hospital Management\\HospitalManagement\\HospitalManagement.csproj",
       "projectName": "HospitalManagement",
-      "projectPath": "C:\\Users\\Admin\\Desktop\\New folder (3)\\New folder\\Hospital-management-master\\HospitalManagement\\HospitalManagement.csproj",
+      "projectPath": "E:\\FS Projects\\Hospital Management\\HospitalManagement\\HospitalManagement.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\Desktop\\New folder (3)\\New folder\\Hospital-management-master\\HospitalManagement\\obj\\",
+      "outputPath": "E:\\FS Projects\\Hospital Management\\HospitalManagement\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
