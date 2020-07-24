@@ -90,7 +90,7 @@ export class HospitalManagementComponent implements OnInit {
         console.log(res);
       },
         err => {
-          console.log(err);     //
+          console.log(err);     
         })
 
   }
