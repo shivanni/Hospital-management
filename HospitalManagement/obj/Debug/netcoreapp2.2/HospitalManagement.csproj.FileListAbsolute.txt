@@ -159,7 +159,6 @@ E:\FS Projects\Hospital Management\HospitalManagement\bin\Debug\netcoreapp2.2\Ho
 E:\FS Projects\Hospital Management\HospitalManagement\bin\Debug\netcoreapp2.2\HospitalManagement.pdb
 E:\FS Projects\Hospital Management\HospitalManagement\bin\Debug\netcoreapp2.2\HospitalManagement.Views.dll
 E:\FS Projects\Hospital Management\HospitalManagement\bin\Debug\netcoreapp2.2\HospitalManagement.Views.pdb
-E:\FS Projects\Hospital Management\HospitalManagement\obj\Debug\netcoreapp2.2\HospitalManagement.csprojAssemblyReference.cache
 E:\FS Projects\Hospital Management\HospitalManagement\obj\Debug\netcoreapp2.2\HospitalManagement.csproj.CoreCompileInputs.cache
 E:\FS Projects\Hospital Management\HospitalManagement\obj\Debug\netcoreapp2.2\HospitalManagement.RazorAssemblyInfo.cache
 E:\FS Projects\Hospital Management\HospitalManagement\obj\Debug\netcoreapp2.2\HospitalManagement.RazorAssemblyInfo.cs
@@ -212,3 +211,4 @@ C:\Users\Admin\Desktop\New folder (3)\New folder\Hospital-management-master\Hosp
 C:\Users\Admin\Desktop\New folder (3)\New folder\Hospital-management-master\HospitalManagement\obj\Debug\netcoreapp2.2\HospitalManagement.dll
 C:\Users\Admin\Desktop\New folder (3)\New folder\Hospital-management-master\HospitalManagement\obj\Debug\netcoreapp2.2\HospitalManagement.pdb
 C:\Users\Admin\Desktop\New folder (3)\New folder\Hospital-management-master\HospitalManagement\obj\Debug\netcoreapp2.2\HospitalManagement.csproj.CopyComplete
+E:\FS Projects\Hospital Management\HospitalManagement\obj\Debug\netcoreapp2.2\HospitalManagement.csprojAssemblyReference.cache

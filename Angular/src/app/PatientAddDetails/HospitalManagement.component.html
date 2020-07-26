@@ -1,28 +1,33 @@
  
-
+<div align=center><br><br>
     
     <form [formGroup]="patientObj.formPatientGroup">
     
-       <!-- Patient Id: <input [ngModelOptions]="{standalone: true}" type="text" [(ngModel)]="patientObj.Id" value="" ><br><br> -->
+      
             <label>PATIENT NAME</label>
             <div>
-                <input  formControlName="NameControl"[(ngModel)]="patientObj.name" id="form-horizontal-text"  type="text" placeholder="Patient Name">
+                <input  formControlName="NameControl"[(ngModel)]="patientObj.name"  
+                         type="text" placeholder="Patient Name">
+                         <!-- <input  formControlName="NameControl"[(ngModel)]="patientObj.name"id="form-horizontal-text"
+                         type="text" placeholder="Patient Name"> -->
             </div>
              <div [hidden]="!(patientObj.formPatientGroup.controls['NameControl'] .hasError('required'))">
-                *Patient Name is required
+                    <p style="color:red;"> *Patient Name is required </p>
              </div> <br>
         
             <label>PATIENT PROBLEM</label>
             <div>
-                <input formControlName="ProblemDescriptionControl" [(ngModel)]="patientProblem.problemDescription"  type="text" placeholder="Patient Problem">
+                <input formControlName="ProblemDescriptionControl" [(ngModel)]="patientProblem.problemDescription" 
+                                         type="text" placeholder="Patient Problem">
+                                         
             </div>
 
             <div [hidden]="!(patientObj.formPatientGroup.controls['ProblemDescriptionControl'].hasError('required'))" >
-                *Patient problem is required
+                    <p style="color:red;">*Patient problem is required </p>
         </div> <br>
     
                    <div>
-                            <input type="button" value="Add Problem" (click)="AddProblem()" >
+                            <input  class="uk-button uk-button-secondary" type="button" value="Add Problem" (click)="AddProblem()" >
                   </div> <br><br>
  
 
@@ -31,26 +36,20 @@
                     <label for="DISEASE">
                             Disease
                     </label>
-                    <select id="Disease" name="Disease"[(ngModel)]="Disease" class="form-control" [ngModelOptions]="{standalone: true}">
-                        <option *ngFor="let disc of diseases" [value]="disc.id">
+                    <select id="Disease"  name="Disease"[(ngModel)]="patientObj.diseaseName" class="form-control" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let disc of diseases" [value]="disc.name">
                             {{disc.name}}
-
                         </option>
+                        
                         </select>
+                        
 
-                  </div>
-                  
-
-
-                <!-- <div>
-                    <span> DISEASE  </span>
-                    <select>
-                            <option *ngFor="let Disease of disease">{{Disease}}</option>
-                    </select>
-                </div>  -->
-                  
+                  </div><br>
+                 
+                
             <div>
-                <input  type="Submit"value="Submit"[disabled]="!(patientObj.formPatientGroup.valid)" (click)="Submit()">
+                    <!-- <button >Secondary</button> -->
+                <input  class="uk-button uk-button-secondary" type="button" value="Submit"[disabled]="!(patientObj.formPatientGroup.valid)" (click)="Submit()">
          
             </div>
     </form>
@@ -58,9 +57,6 @@
     
     <table >
         
-            <tr>
-                <th>Patient Problem</th>
-            </tr>
       
             <tr  *ngFor="let Problem of patientObj.problems" >
                 <td>{{Problem.problemDescription}}</td>
@@ -74,6 +70,7 @@
                 <th>Sr.No.</th>
                 <th>Name</th>
                 <th>Description</th>
+                <th>Disease</th>
             </tr>
             <tr  *ngFor="let c of patientList let i=index;" >
                 <td>{{i+1}}</td>
@@ -85,13 +82,18 @@
                             <td>
                                 {{pr.problemDescription}}
                             </td>
+                           
                         </tr>
+                        
                     </table>
                 </td>
+               
+                        <td>{{c.diseaseName}}</td>
+                
             </tr>
        
     </table>
     
-    
+    </div>
     
     

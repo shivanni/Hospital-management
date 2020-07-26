@@ -7,11 +7,9 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-patient-login',
   templateUrl: './PatientLogin.component.html',
- 
-  //styleUrls: ['./PatientLogin.component.css']
+
 })
 export class PatientLoginComponent{
-  //userObj:User=new User()
   
   constructor(public Http:HttpClient, public  userObj:User, 
               public routing: Router

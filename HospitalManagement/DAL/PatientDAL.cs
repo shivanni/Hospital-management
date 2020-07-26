@@ -30,13 +30,13 @@ namespace HospitalManagement.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<PatientModel>()
-               .ToTable("tb1Patient");
+               .ToTable("tb1Patients");
 
             modelBuilder.Entity<Problem>()
-                .ToTable("tb1Problem");
+                .ToTable("tb1Problems");
 
             modelBuilder.Entity<DiseaseModel>()
-             .ToTable("tb1Disease");
+             .ToTable("tb1CDisease");
 
             modelBuilder.Entity<PatientModel>()
                 .HasKey(p => p.id);
@@ -57,6 +57,7 @@ namespace HospitalManagement.DAL
 
         public DbSet<PatientModel> PatientModels { get; set; }
         public DbSet<Problem> Problems { get; set; }
+    
         public DbSet<DiseaseModel> Diseas { get; set; }
 
     }

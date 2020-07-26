@@ -7,6 +7,6 @@ namespace HospitalManagement.Models
         [Key]
         public int id { get; set; }
         public string name { get; set; }
-       // public PatientModel patient { get; set; }   //Imverse Navigation Property
+        //public PatientModel disease { get; set; }   //Imverse Navigation Property
     }
 }

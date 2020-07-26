@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using HospitalManagement.DAL;
@@ -24,6 +25,7 @@ namespace HospitalManagement.Controllers
     public class PatientAPIController : ControllerBase
     {
         public string ConStr { get; private set; }
+
 
         [HttpGet]
         public IActionResult Get(string patientName)
@@ -63,7 +65,14 @@ namespace HospitalManagement.Controllers
                 dal.SaveChanges();              // pysical commit save to database         
 
 
-                List<PatientModel> recs = dal.PatientModels.Include(pat => pat.problems).ToList<PatientModel>();
+                List<PatientModel> recs = dal.PatientModels.Include(pat => pat.problems).
+                ToList<PatientModel>();
+                //List<DiseaseModel> dic = dal.Diseas.ToList<DiseaseModel>();
+                //dynamic dics = new ExpandoObject();
+                //dics.PatientModel = recs;
+                //dics.DiseaseModel = dic;
+
+
                 var json = JsonConvert.SerializeObject(recs, Formatting.None,
                                          new JsonSerializerSettings()
                                          {

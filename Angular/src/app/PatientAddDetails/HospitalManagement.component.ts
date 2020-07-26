@@ -13,23 +13,12 @@ import { DiseaseModel } from '../Disease/DModel';
 })
 export class HospitalManagementComponent implements OnInit {
 
-  // diseases:Disease[] =[
-  //   {id: 1, name:'None'},
-  //   {id: 2, name:'Blood-Pressure'},
-  //   {id: 3, name:'Diabetes'},
-  //   {id: 4, name:'Cystic Fibrosis'},
-  //   {id: 5, name:'Headache'},
-  //   {id: 6, name:'cold'},
-
-  // ];
-
   public diseases: Array<DiseaseModel> = new Array<DiseaseModel>();
   ngOnInit() {
 
   }
   patientProblem: PatientProblem = new PatientProblem();
-  //diseases: Disease = new Disease();
-  //diseases: any;
+ //// gDiseaseObj: GDisease = new GDisease();
   constructor(public Http: HttpClient) {
     this.patientObj = new PatientModel()  //single record
 
@@ -45,20 +34,23 @@ export class HospitalManagementComponent implements OnInit {
     this.patientProblem = new PatientProblem();
 
   }
+  // AddDisease() {
+  //   this.patientObj.gDiseaseObj.push(this.gDiseaseObj);
+  //   this.gDiseaseObj = new GDisease();
 
+  // }
 
   Submit() {
     //var data = _.omit(this.patientObj, ['formPatientGroup']);
     var patientDto: any = {};
     patientDto.name = this.patientObj.name;
+    patientDto.diseaseName = this.patientObj.diseaseName;
     // patientDto.id = this.patientObj.id;
     patientDto.problems = []; //empty collection
     patientDto.problems = this.patientObj.patientProblems;
     patientDto.problemDescription = this.patientObj.problemDescription;
-
-
-
-
+    patientDto.gDiseaseObj = [];
+    //patientDto.gDiseaseObj=this.patientObj.gDiseaseObj;
 
     this.Http.post("https://localhost:44372/api/PatientAPI", patientDto)
       .subscribe(res => {
@@ -71,7 +63,9 @@ export class HospitalManagementComponent implements OnInit {
       );
   }
   Success(res) {
+  
     this.patientList = res;
+    
     this.patientObj = new PatientModel();
   }
 
@@ -94,6 +88,9 @@ export class HospitalManagementComponent implements OnInit {
         })
 
   }
+  // select(){
+ 
+  // }
 
 }
 

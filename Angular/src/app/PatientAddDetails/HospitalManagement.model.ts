@@ -4,15 +4,15 @@ import {
         FormControl,Validators,FormBuilder
     } from '@angular/forms'
 
+
 export class PatientModel{
+
     id: number=0;
+    diseaseName: string="";
     name:string = "";
     problemDescription:string = "";
-   // selectDisease:string ="";
+    //gDiseaseObj: Array<GDisease>= new Array<GDisease>();
     patientProblems: Array<PatientProblem>= new Array<PatientProblem>();  //  Array to store multiple Problem Description
-    //diseases: Array<Disease>=new Array<Disease>();
- 
-   
     formPatientGroup :FormGroup=null;
     constructor(){
         var _builder=new FormBuilder();
@@ -25,9 +25,19 @@ export class PatientModel{
 export class PatientProblem{
     id: number=0;
     problemDescription:string="";
+
 }
+
+// export class GDisease{
+//     id: number=0
+//     diseaseName:string="";
+// }
+
+
 export class Disease{
     id: number=0
    name:string="";
 }
+ 
+
 

@@ -19,7 +19,10 @@ namespace HospitalManagement.Models
         [Required]
         // public string problemDescription { get; set; }
 
+        public string diseaseName { get; set; }
+
         public List<Problem> problems { get; set; }
+       // public List<GDisease> gDiseases { get; set; }
 
     }
 
@@ -30,5 +33,13 @@ namespace HospitalManagement.Models
         public string problemDescription { get; set; }
         public PatientModel patient { get; set; }   //Imverse Navigation Property
     }
-   
+    //public class GDisease
+    //{
+
+    //    public int id { get; set; }
+    //    public string diseaseName { get; set; }
+    //    public PatientModel patient { get; set; }   //Imverse Navigation Property
+    //}
+
+
 }

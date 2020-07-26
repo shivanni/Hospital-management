@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HospitalManagement.Migrations
 {
     [DbContext(typeof(PatientDAL))]
-    [Migration("20200710064610_v872020")]
-    partial class v872020
+    [Migration("20200726135207_v2020")]
+    partial class v2020
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,18 +21,34 @@ namespace HospitalManagement.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("HospitalManagement.Models.DiseaseModel", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("name");
+
+                    b.HasKey("id");
+
+                    b.ToTable("tb1CDisease");
+                });
+
             modelBuilder.Entity("HospitalManagement.Models.PatientModel", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("diseaseName")
+                        .IsRequired();
+
                     b.Property<string>("name")
                         .IsRequired();
 
                     b.HasKey("id");
 
-                    b.ToTable("tb1Patient");
+                    b.ToTable("tb1Patients");
                 });
 
             modelBuilder.Entity("HospitalManagement.Models.Problem", b =>
@@ -49,7 +65,7 @@ namespace HospitalManagement.Migrations
 
                     b.HasIndex("patientid");
 
-                    b.ToTable("tb1Problem");
+                    b.ToTable("tb1Problems");
                 });
 
             modelBuilder.Entity("HospitalManagement.Models.Problem", b =>

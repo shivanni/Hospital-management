@@ -1,8 +1,48 @@
+<!-- <body style="background-color:powderblue;">
+<div align=center><br><br>
 <div class="container">
-    <h3>Hospital App</h3><br>
+        <h1 style="font-size:40px;">Hospital App</h1>
+    
     
     <div>
     <router-outlet>
     </router-outlet>
     </div>
     </div>
+    </div>
+</body> -->
+<nav style="background-color: rgb(159, 234, 240);" class="uk-navbar-container" uk-navbar>
+		<div class="uk-navbar-left">
+				<ul class="uk-navbar-nav">
+					<!-- <li><a class="uk-navbar-item uk-logo" href="#">Hospital Management EMR</a></li>	 -->
+			  </ul>
+			</div>
+
+		<div class="uk-navbar-right">
+	
+			<ul class="uk-navbar-nav">
+				
+				<li><a [routerLink]="['Home']">Home</a></li>
+				<li>
+					<a href="#">Patient</a>
+					<div class="uk-navbar-dropdown">
+						<ul class="uk-nav uk-navbar-dropdown-nav">
+							<li><a class="uk-active" [routerLink]="['/Patient/Add/']">PATIENT ADD</a></li>
+							<li><a class="uk-active" [routerLink]="['/SearchPatient/View']">PATIENT SEARCH</a></li>
+						</ul>
+					</div>
+				</li>
+				<li><a [routerLink]="['/Disease/View']"> Disease</a></li>
+				 <li><a [routerLink]="['PatientLogin/Login']">Login</a></li> 
+				 <!-- <li><a [routerLink]="['Registration']">Registration</a></li> -->
+			</ul>
+	
+		</div>
+	
+	</nav>
+
+	
+	
+	<div style="margin-left: 200px; margin-top: 50px; margin-right: 200px;">
+			<router-outlet></router-outlet>
+	</div>
